@@ -54,8 +54,8 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
-                        TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingEmailTextfield)
-                        TextField("Password", text: $email) {}
+                        TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingPasswordTextfield)
+                        SecureField("Password", text: $password) {}
                             .colorScheme(.dark)
                             .foregroundColor(Color.white.opacity(0.7))
                             .autocapitalization(.none)

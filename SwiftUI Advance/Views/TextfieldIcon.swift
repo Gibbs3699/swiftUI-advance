@@ -59,6 +59,6 @@ struct TextfieldIcon: View {
 
 struct TextfieldIcon_Previews: PreviewProvider {
     static var previews: some View {
-        TextfieldIcon(iconName: "key.fill", currentlyEditing: .constant(false))
+        TextfieldIcon(iconName: "key.fill", currentlyEditing: .constant(true))
     }
 }
