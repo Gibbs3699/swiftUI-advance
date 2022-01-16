@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import AudioToolbox
 
 struct ContentView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var editingEmailTextfield: Bool = false
     @State private var editingPasswordTextfield: Bool = false
+    @State private var emailIconBounce: Bool = false
+    @State private var passwordIconBounce: Bool = false
+    private let generator = UISelectionFeedbackGenerator()
     
     var body: some View {
         ZStack {
@@ -31,11 +35,24 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         TextfieldIcon(iconName: "envelope.open.fill", currentlyEditing: $editingEmailTextfield)
+                            .scaleEffect(emailIconBounce ? 1.2 : 1.0)
                         
                         TextField("Email", text: $email) {
                             isEditing in
                             editingEmailTextfield = isEditing
                             editingPasswordTextfield = false
+                            if isEditing {
+                                generator.selectionChanged()
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
+                                    emailIconBounce.toggle()
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5).delay(0.15)) {
+                                        emailIconBounce.toggle()
+                                    }
+                                }
+                            }
                         }
                             .colorScheme(.dark)
                             .foregroundColor(Color.white.opacity(0.7))
@@ -55,6 +72,8 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingPasswordTextfield)
+                            .scaleEffect(passwordIconBounce ? 1.2 : 1.0)
+                        
                         SecureField("Password", text: $password) {}
                             .colorScheme(.dark)
                             .foregroundColor(Color.white.opacity(0.7))
@@ -73,6 +92,18 @@ struct ContentView: View {
                     .onTapGesture {
                         editingPasswordTextfield = true
                         editingEmailTextfield = false
+                        if editingPasswordTextfield {
+                            generator.selectionChanged()
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
+                                passwordIconBounce.toggle()
+                            }
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5).delay(0.15)) {
+                                    passwordIconBounce.toggle()
+                                }
+                            }
+                        }
                     }
                     
                     GradientButton()
