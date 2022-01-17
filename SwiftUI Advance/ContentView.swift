@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var showProfileView: Bool = false
     @State private var signupToggle: Bool = true
     @State private var rotationAngle = 0.0
+    @State private var signInWithAppleObject = SignInWithAppleObject()
     private let generator = UISelectionFeedbackGenerator()
     
     var body: some View {
@@ -166,7 +167,7 @@ struct ContentView: View {
                                 .foregroundColor(.white.opacity(0.1))
 
                             Button(action: {
-                                print("Sign in with apple")
+                                signInWithAppleObject.signInWithApple()
                             }, label: {
                                 SignInWithAppleButton()
                                     .frame(height: 50)
