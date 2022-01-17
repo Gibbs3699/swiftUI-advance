@@ -160,6 +160,18 @@ struct ContentView: View {
                                         .font(.footnote.bold())
                                 }
                             })
+                            
+                            Rectangle()
+                                .frame(height: 1)
+                                .foregroundColor(.white.opacity(0.1))
+
+                            Button(action: {
+                                print("Sign in with apple")
+                            }, label: {
+                                SignInWithAppleButton()
+                                    .frame(height: 50)
+                                    .cornerRadius(16)
+                            })
                         }
                     }
                 }
