@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AudioToolbox
+import FirebaseAuth
 
 struct ContentView: View {
     @State private var email: String = ""
@@ -15,6 +16,7 @@ struct ContentView: View {
     @State private var editingPasswordTextfield: Bool = false
     @State private var emailIconBounce: Bool = false
     @State private var passwordIconBounce: Bool = false
+    @State private var showProfileView: Bool = false
     private let generator = UISelectionFeedbackGenerator()
     
     var body: some View {
@@ -106,7 +108,17 @@ struct ContentView: View {
                         }
                     }
                     
-                    GradientButton()
+                    GradientButton(buttonTitle: "Create Account"){
+                        generator.selectionChanged()
+                        signup()
+                    }
+                    .onAppear {
+                        Auth.auth().addStateDidChangeListener { auth, user in
+                            if user != nil {
+                                showProfileView.toggle()
+                            }
+                        }
+                    }
                     
                     
                     Text("By clicking on Sign Up, you must agree to our Terms of servicec and Privacy policy")
@@ -144,8 +156,20 @@ struct ContentView: View {
             .cornerRadius(30.0)
             .padding(.horizontal)
         }
+        .fullScreenCover(isPresented: $showProfileView) {
+            ProfileView()
+        }
     }
-
+    
+    func signup() {
+       Auth.auth().createUser(withEmail: email, password: password) { result, error in
+           guard error == nil else {
+               print(error!.localizedDescription)
+               return
+           }
+           print("User signed up!")
+       }
+   }
 }
 
 
