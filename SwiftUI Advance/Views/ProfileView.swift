@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showAlertView: Bool = false
+    @State private var alertTitle: String = ""
+    @State private var alertMessage: String = ""
+    
     var body: some View {
         ZStack {
             Image("background-2")
@@ -18,15 +24,18 @@ struct ProfileView: View {
             VStack() {
                 VStack(alignment: .leading, spacing: 16) {
                     HStack(spacing: 16) {
-                        ZStack {
-                            Circle()
-                                .foregroundColor(Color("pink-gradient-1"))
-                                .frame(width: 66, height: 66, alignment: .center)
-                            Image(systemName: "person.fill")
-                                .foregroundColor(.white)
-                                .font(.system(size: 24, weight: .medium, design: .rounded))
-                        }
-                        .frame(width: 66, height: 66, alignment: .center)
+//                        ZStack {
+//                            Circle()
+//                                .foregroundColor(Color("pink-gradient-1"))
+//                                .frame(width: 66, height: 66, alignment: .center)
+//                            Image(systemName: "person.fill")
+//                                .foregroundColor(.white)
+//                                .font(.system(size: 24, weight: .medium, design: .rounded))
+//                        }
+//                        .frame(width: 66, height: 66, alignment: .center)
+                        
+                        GradientProfilePictureView(profilePicture: UIImage(named: "128")!)
+                            .frame(width: 66, height: 66)
                         
                         VStack(alignment: .leading) {
                             Text("TheGIZzz")
@@ -41,7 +50,7 @@ struct ProfileView: View {
                         Spacer()
 
                         Button(action: {
-                            print("Segue to settings")
+                            signout()
                         }, label: {
                             TextfieldIcon(iconName: "gearshape.fill", currentlyEditing: .constant(true))
                         })
@@ -129,6 +138,18 @@ struct ProfileView: View {
             .padding(.bottom, 200)
         }
         .colorScheme(.dark)
+    }
+    
+    func signout() {
+        do {
+            try Auth.auth().signOut()
+            presentationMode.wrappedValue.dismiss()
+        } catch let error {
+            print(error.localizedDescription)
+            alertTitle = "Uh-Oh!"
+            alertMessage = error.localizedDescription
+            showAlertView.toggle()
+        }
     }
 }
 
