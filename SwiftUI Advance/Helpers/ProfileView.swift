@@ -13,6 +13,7 @@ struct ProfileView: View {
     @State private var showAlertView: Bool = false
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
+    @State private var showSettingsView: Bool = false
     
     var body: some View {
         ZStack {
@@ -50,7 +51,7 @@ struct ProfileView: View {
                         Spacer()
 
                         Button(action: {
-                            signout()
+                            showSettingsView.toggle()
                         }, label: {
                             TextfieldIcon(iconName: "gearshape.fill", currentlyEditing: .constant(true))
                         })
@@ -114,7 +115,7 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 Button(action: {
-                    print("Sign out")
+                    signout()
                 }, label: {
                     Image(systemName: "arrow.turn.up.forward.iphone.fill")
                         .foregroundColor(.white)
@@ -136,6 +137,9 @@ struct ProfileView: View {
                 })
             }
             .padding(.bottom, 200)
+            .sheet(isPresented: $showSettingsView, content: {
+                SettingView()
+            })
         }
         .colorScheme(.dark)
     }

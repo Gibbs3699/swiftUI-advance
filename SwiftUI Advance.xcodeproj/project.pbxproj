@@ -24,6 +24,8 @@
 		84CF18B02791DECC00926B97 /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF18AE2791DECC00926B97 /* VisualEffectBlur.swift */; };
 		84CF18B12791DECC00926B97 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF18AF2791DECC00926B97 /* ImagePicker.swift */; };
 		84F2031D279ACEC9005D95CB /* GradientProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2031C279ACEC8005D95CB /* GradientProfilePictureView.swift */; };
+		84F2031F279B103A005D95CB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2031E279B1039005D95CB /* SettingView.swift */; };
+		84F20321279B13A8005D95CB /* GradientTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F20320279B13A8005D95CB /* GradientTextfield.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		84CF18AE2791DECC00926B97 /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
 		84CF18AF2791DECC00926B97 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		84F2031C279ACEC8005D95CB /* GradientProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProfilePictureView.swift; sourceTree = "<group>"; };
+		84F2031E279B1039005D95CB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		84F20320279B13A8005D95CB /* GradientTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTextfield.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,9 @@
 				84BBFACF2793205C00947196 /* GradientText.swift */,
 				84BBFAD3279320CF00947196 /* TextfieldIcon.swift */,
 				84BBFAD1279320AE00947196 /* GradientButton.swift */,
-				84BBFADA2795C8DC00947196 /* ProfileView.swift */,
 				84BBFADC2795D20400947196 /* SignInWithAppleButton.swift */,
 				84F2031C279ACEC8005D95CB /* GradientProfilePictureView.swift */,
+				84F20320279B13A8005D95CB /* GradientTextfield.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +118,8 @@
 		84CF18AD2791DECC00926B97 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				84BBFADA2795C8DC00947196 /* ProfileView.swift */,
+				84F2031E279B1039005D95CB /* SettingView.swift */,
 				84CF18AE2791DECC00926B97 /* VisualEffectBlur.swift */,
 				84CF18AF2791DECC00926B97 /* ImagePicker.swift */,
 				84BBFADE2795D37A00947196 /* SignInWithAppleObject.swift */,
@@ -201,6 +207,8 @@
 				84CF18B02791DECC00926B97 /* VisualEffectBlur.swift in Sources */,
 				84BBFAD2279320AE00947196 /* GradientButton.swift in Sources */,
 				84BBFADB2795C8DC00947196 /* ProfileView.swift in Sources */,
+				84F2031F279B103A005D95CB /* SettingView.swift in Sources */,
+				84F20321279B13A8005D95CB /* GradientTextfield.swift in Sources */,
 				84BBFADF2795D37A00947196 /* SignInWithAppleObject.swift in Sources */,
 				84BBFAD02793205C00947196 /* GradientText.swift in Sources */,
 				84BBFAD4279320CF00947196 /* TextfieldIcon.swift in Sources */,
