@@ -49,6 +49,43 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
+                        TextfieldIcon(iconName: "envelope.open.fill", currentlyEditing: $editingEmailTextfield)
+                            .scaleEffect(emailIconBounce ? 1.2 : 1.0)
+                        
+                        TextField("Email", text: $email) {
+                            isEditing in
+                            editingEmailTextfield = isEditing
+                            editingPasswordTextfield = false
+                            if isEditing {
+                                generator.selectionChanged()
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5)) {
+                                    emailIconBounce.toggle()
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0.5).delay(0.15)) {
+                                        emailIconBounce.toggle()
+                                    }
+                                }
+                            }
+                        }
+                            .colorScheme(.dark)
+                            .foregroundColor(Color.white.opacity(0.7))
+                            .autocapitalization(.none)
+                            .textContentType(.emailAddress)
+                    }
+                    .frame(height: 52)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white, lineWidth: 1.0)
+                        .blendMode(.overlay)
+                    )
+                    .background(Color("secondaryBackground").opacity(0.5))
+                    .cornerRadius(16.0)
+                    .opacity(0.8)
+                    
+                    HStack {
+                        Spacer()
                         TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingPasswordTextfield)
                             .scaleEffect(passwordIconBounce ? 1.2 : 1.0)
                         
