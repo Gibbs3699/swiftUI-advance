@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "Purchases",
+        "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
+        "state": {
+          "branch": null,
+          "revision": "0203388d4095bcccd9ebb73e12936c7316772f11",
+          "version": "3.13.2"
+        }
+      },
+      {
         "package": "SwiftProtobuf",
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
