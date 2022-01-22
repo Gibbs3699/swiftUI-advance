@@ -49,7 +49,7 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
-                        TextfieldIcon(iconName: "envelope.open.fill", currentlyEditing: $editingEmailTextfield)
+                        TextfieldIcon(iconName: "envelope.open.fill", passedImage: .constant(nil), currentlyEditing: $editingEmailTextfield)
                             .scaleEffect(emailIconBounce ? 1.2 : 1.0)
                         
                         TextField("Email", text: $email) {
@@ -86,7 +86,7 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
-                        TextfieldIcon(iconName: "key.fill", currentlyEditing: $editingPasswordTextfield)
+                        TextfieldIcon(iconName: "key.fill", passedImage: .constant(nil), currentlyEditing: $editingPasswordTextfield)
                             .scaleEffect(passwordIconBounce ? 1.2 : 1.0)
                         
                         SecureField("Password", text: $password) {}
