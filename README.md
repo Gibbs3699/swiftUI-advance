@@ -1,5 +1,5 @@
-# swiftUI-advance dsdsadasdasdas
+# swiftUI-advance
 
-Learn swiftUI including 
+Learn swiftUI including (iOS13)
 - Core Data
 - UI Design
